@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="menu">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:replace="~{top::menu}"></div>
+
+<form action="/searchsave" method="post">
+    <table class="search-form">
+        <caption>검색할 도서를 입력하세요</caption>
+        <tr>
+            <th>검색항목</th>
+            <td>
+                <select name="bkey">
+                    <option value="name">도서명</option>
+                    <option value="writer">작가명</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>검색값</th>
+            <td>
+                <input type="text" name="bvalue">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="submit">검색</button>
+                <button type="button" onclick="location.href='/'">취소</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

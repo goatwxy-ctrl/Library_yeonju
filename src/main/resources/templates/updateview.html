@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="menu">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:replace="~{top::menu}"></div>
+
+    <div class="container" >
+        <h2>정보를 수정해주세요</h2>
+        <form action="/updatesave" method="post" enctype="multipart/form-data">
+            <table class="edit-table">
+            <div class="form-group">
+                <label>도서번호</label>
+                <input type="text" name="bunho" th:value="${dto.bunho}" readonly>
+            </div>
+            <div class="form-group">
+                <label>도서명</label>
+                <input type="text" name="name" th:value="${dto.name}" >
+            </div>
+            <div class="form-group">
+                <label>작가명</label>
+                <input type="text" name="writer" th:value="${dto.writer}">
+            </div>
+            <div class="form-group">
+                <label>도서소개</label>
+                <input type="text" name="info" th:value="${dto.info}" >
+            </div>
+            <div class="form-row image-row">
+                <label>도서이미지</label>
+                <img th:src="@{/image/{img}(img=${dto.image_name})}">
+                <input type="file" name="image">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">확인</button>
+                <button type="reset" class="btn btn-primary", onclick="location.href='/'">취소</button>
+            </div>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

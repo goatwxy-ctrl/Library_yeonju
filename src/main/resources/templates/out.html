@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="menu">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:replace="~{top::menu}"></div>
+<div align="center">
+
+    <div class="container">
+        <div class="form-group">
+            <h2 th:text="${'도서 정보'}"></h2>
+        </div>
+        <div class="form-group">
+            <table class="도서 정보 확인" border="2" width="1000px" align="center">
+                <tr>
+                    <th>책번호</th>
+                    <th>도서명</th>
+                    <th>작가명</th>
+                    <th>도서소개</th>
+                    <th>수정/삭제</th>
+                    <th>조회수</th>
+                </tr>
+                <tr th:each="bb:${list}">
+                    <td th:text="${bb.bunho}"> </td>
+                    <td>
+                        <a th:href="@{/detail(number=${bb.bunho})}" th:text="${bb.name}"></a>
+                    </td>
+                    <td th:text="${bb.writer}"> </td>
+                    <td th:text="${bb.info}"> </td>
+                    <td>
+                        <a th:href="@{/update(number=${bb.bunho})}">수정</a>
+                        <a th:href="@{/delete(number=${bb.bunho}, delimage=${bb.image_name})}">삭제</a>
+                    </td>
+                    <td th:text="${bb.readcnt}+'회'"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
